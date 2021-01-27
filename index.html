@@ -66,7 +66,7 @@
                      <div class="col-md-4 status">
                         <h5>$ <span id="subtotal">1278</span></h5>
                         <h5>$0</h5>
-                        <h5>$1,278</h5>
+                        <h5>$ <span id="total">1278</span></h5>
                      </div>
                   </div>
                </div>
@@ -90,6 +90,7 @@
          const mobileTotal = mobileValueNumber + 1219;
          document.getElementById("mobileValue").innerText = mobileTotal;
          const subTotal = document.getElementById("subtotal").innerText = mobileTotal;
+         const toTal = document.getElementById("total").innerText = mobileTotal;
       })
 
       const positive = document.getElementById("positive");
@@ -115,6 +116,7 @@
          const total = mobileValueNumber - 1219;
          document.getElementById("mobileValue").innerText = total;
          const subTotal = document.getElementById("subtotal").innerText = total;
+         const toTal = document.getElementById("total").innerText = total;
          }
          else{
             document.getElementById("mobileValue").innerText = "0";
@@ -131,6 +133,7 @@
          if(caseValueNumber>=59){
          const total = caseValueNumber - 59;
          document.getElementById("caseValue").innerText = total;
+         
          }
          else{
             document.getElementById("caseValue").innerText = "0";
