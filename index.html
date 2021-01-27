@@ -12,7 +12,7 @@
 
 <body>
 
-   <section>
+   <section id="first-page">
       <div class="container">
          <div class="cart">
             <div class="col-md-12 col-lg-10 mx-auto">
@@ -71,12 +71,15 @@
                   </div>
                </div>
                <div class="col-md-12 pt-4 pb-4">
-                  <button type="button" class="btn btn-success check-out">Check Out</button>
+                  <button type="button" id="checkout" class="btn btn-success check-out">Check Out</button>
                </div>
             </div>
          </div>
       </div>
    </section>
+   <div id="text">
+      <h2 class="text-center">Your product is ready to deliver. <br> Thank You.</h2>
+   </div>
 
    <script>
       //product increase
@@ -159,7 +162,12 @@
             document.getElementById(id).value = "0";
          }
       }
-
+      //check out
+      const checkoutbtn = document.getElementById("checkout");
+      checkoutbtn.addEventListener("click", function(){
+          document.getElementById("first-page").style.display = "none";
+          document.getElementById("text").style.display = "block";
+      })
       
    </script>
 </body>
