@@ -25,11 +25,11 @@
 
                      <div class="col-md-5 center-item">
                         <div class="input-group number-spinner">
-                           <button class="btn btn-default"><i class="fas fa-minus"></i></button>
-                           <input type="text" class="form-control text-center" value="1">
-                           <button class="btn btn-default"><i class="fas fa-plus"></i></button>
+                           <button id="minus" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                           <input type="text" class="form-control text-center" id="value" value="1">
+                           <button id="plus" class="btn btn-default"><i class="fas fa-plus"></i></button>
                         </div>
-                        <h5>$1219</h5>
+                        <h5>$ <span id="mobileValue">1219</span></h5>
                         <img src="images/remove.png" alt="" class="remove-item">
                      </div>
                   </div>
@@ -43,12 +43,12 @@
                      </div>
                      <div class="col-md-5 center-item">
                         <div class="input-group number-spinner">
-                           <button class="btn btn-default"><i class="fas fa-minus"></i></button>
-                           <input type="text" class="form-control text-center" value="1">
-                           <button class="btn btn-default"><i class="fas fa-plus"></i></button>
+                           <button id="negative" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                           <input type="text" class="form-control text-center" id="secondValue" value="1">
+                           <button id="positive" class="btn btn-default"><i class="fas fa-plus"></i></button>
 
                         </div>
-                        <h5>$59</h5>
+                        <h5>$ <span id="caseValue">59</span></h5>
                         <img src="images/remove.png" alt="" class="remove-item">
                      </div>
                   </div>
@@ -64,7 +64,7 @@
                      </div>
 
                      <div class="col-md-4 status">
-                        <h5>$1,278</h5>
+                        <h5>$ <span id="subtotal">1278</span></h5>
                         <h5>$0</h5>
                         <h5>$1,278</h5>
                      </div>
@@ -77,6 +77,88 @@
          </div>
       </div>
    </section>
+
+   <script>
+      //product increase
+      const plus =document.getElementById("plus");
+      plus.addEventListener("click", function(){
+         increase("value");
+
+         const mobileValue = document.getElementById("mobileValue").innerText;
+         const mobileValueNumber = parseFloat(mobileValue);
+
+         const mobileTotal = mobileValueNumber + 1219;
+         document.getElementById("mobileValue").innerText = mobileTotal;
+         const subTotal = document.getElementById("subtotal").innerText = mobileTotal;
+      })
+
+      const positive = document.getElementById("positive");
+      positive.addEventListener("click", function(){
+         increase("secondValue");
+         
+         const caseValue = document.getElementById("caseValue").innerText;
+         const caseValueNumber = parseFloat(caseValue);
+
+         const caseTotal = caseValueNumber + 59;
+         document.getElementById("caseValue").innerText = caseTotal;
+      })
+
+      //product decrease
+      const minus =document.getElementById("minus");
+      minus.addEventListener("click", function(){
+         decrease("value");
+
+         const mobileValue = document.getElementById("mobileValue").innerText;
+         const mobileValueNumber = parseFloat(mobileValue);
+
+         if(mobileValueNumber>=1219){
+         const total = mobileValueNumber - 1219;
+         document.getElementById("mobileValue").innerText = total;
+         const subTotal = document.getElementById("subtotal").innerText = total;
+         }
+         else{
+            document.getElementById("mobileValue").innerText = "0";
+         }
+      })
+
+      const negative = document.getElementById("negative");
+      negative.addEventListener("click", function(){
+         decrease("secondValue");
+
+         const caseValue = document.getElementById("caseValue").innerText;
+         const caseValueNumber = parseFloat(caseValue);
+
+         if(caseValueNumber>=59){
+         const total = caseValueNumber - 59;
+         document.getElementById("caseValue").innerText = total;
+         }
+         else{
+            document.getElementById("caseValue").innerText = "0";
+         }
+      })
+
+      //increase function
+      function increase(id){
+         const value = document.getElementById(id).value;
+         const valueNumber = parseFloat(value);
+         
+         const increase = valueNumber + 1;
+         document.getElementById(id).value = increase;
+      }
+      //decrease function
+      function decrease(id){
+         const value = document.getElementById(id).value;
+         const valueNumber = parseFloat(value);
+         if(valueNumber>=1){
+         const decrease = valueNumber - 1;
+         document.getElementById(id).value = decrease;}
+         else{
+            document.getElementById(id).value = "0";
+         }
+      }
+
+      
+   </script>
 </body>
 
 </html>
